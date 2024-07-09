@@ -173,92 +173,89 @@ class Express:
                 else:
                     print(f"There are no {kelas} class")
             
+            print("\nPlease insert your data:")
+            name = input("Name\t\t\t  : ")
             while True:
-                print("\nPlease insert your data:")
-                name = input("Name\t\t\t  : ")
-                while True:
-                    departdate = input("Departure date(DD/MM/YYYY): ")
-                    if len(departdate) == 10:
-                        try:
-                            hari1, bulan1, tahun1 = map(int, departdate.split('/'))
-                            break
-                        except ValueError:
-                            print("Wrong format, please enter a valid date.")
-                    else:
-                        print("Wrong format")
-                while True:
-                    departtime = input("Departure time(HH:MM)\t  : ")
-                    if len(departtime) == 5:
-                        try:
-                            jam1, menit1 = map(int, departtime.split(':'))
-                            break
-                        except ValueError:
-                            print("Input yang benar")
-                    else:
-                        print("Wrong format")
-                confirm = input("Are you sure about all the data above?(yes/no) : ").lower()
-                print()
-                if confirm == "no":
-                    continue
-                else:
-                    duration = shortest_path[tujuan]
-                    totalCost = duration * 15 + self.Train[kelas][1]
-                    jam = jam1 + duration
-                    menit = menit1
-                    hari = hari1
-                    bulan = bulan1
-                    tahun = tahun1
-
-                    while jam >= 24:
-                        jam -= 24
-                        hari += 1
-                        if bulan in [1, 3, 5, 7, 8, 10, 12] and hari > 31:
-                            hari = 1
-                            bulan += 1
-                        elif bulan in [4, 6, 9, 11] and hari > 30:
-                            hari = 1
-                            bulan += 1
-                        elif bulan == 2:
-                            if (tahun % 4 == 0 and tahun % 100 != 0) or (tahun % 400 == 0):  # Leap year
-                                if hari > 29:
-                                    hari = 1
-                                    bulan += 1
-                            else:
-                                if hari > 28:
-                                    hari = 1
-                                    bulan += 1
-                        if bulan > 12:
-                            bulan = 1
-                            tahun += 1
-
-                    date2 = f"{hari:02}/{bulan:02}/{tahun}"
-                    time2 = f"{jam:02}:{menit:02}"
-
-                    print(f"+{'-' * 63}+")
-                    print(f"| TRAIN TICKET \t\t\t\t\t\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"| Origin\t| {asal}\t\t\t\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"| Date\t\t: {departdate}\t\tTIME\t: {departtime}\t\t|")
-                    train = f"{random.randint(100, 999)}-{random.choice(string.ascii_uppercase)}"
-                    print(f"| Train#\t: {train}\t\t\tCLASS\t: {kelas}\t|")
-                    platform = f"{random.randint(1, 10):02}"
-                    seat = f"{random.randint(1, 50):02}"
-                    print(f"| PLATFORM\t: {platform}\t\t\tSEAT\t: {seat}\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"| DESTINATION\t| {tujuan}\t\t\t\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"| DATE\t: {date2}\t\t\tTIME\t: {time2}\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"| Passenger Name : {name}\t\t\t\t\t|")
-                    print(f"+{'-' * 63}+")
-                    print(f"Total Cost\t: ${totalCost}")
-
-                    other = input("\nOrder another ticket? (yes/no) : ")
-                    if other == "no":
-                        return
-                    else:
+                departdate = input("Departure date(DD/MM/YYYY): ")
+                if len(departdate) == 10:
+                    try:
+                        hari1, bulan1, tahun1 = map(int, departdate.split('/'))
                         break
+                    except ValueError:
+                        print("Wrong format, please enter a valid date.")
+                else:
+                    print("Wrong format")
+            while True:
+                departtime = input("Departure time(HH:MM)\t  : ")
+                if len(departtime) == 5:
+                    try:
+                        jam1, menit1 = map(int, departtime.split(':'))
+                        break
+                    except ValueError:
+                        print("Input yang benar")
+                else:
+                    print("Wrong format")
+            confirm = input("Are you sure about all the data above?(yes/no) : ").lower()
+            print()
+            if confirm == "no":
+                continue
+            else:
+                duration = shortest_path[tujuan]
+                totalCost = duration * 15 + self.Train[kelas][1]
+                jam = jam1 + duration
+                menit = menit1
+                hari = hari1
+                bulan = bulan1
+                tahun = tahun1
+
+                while jam >= 24:
+                    jam -= 24
+                    hari += 1
+                    if bulan in [1, 3, 5, 7, 8, 10, 12] and hari > 31:
+                        hari = 1
+                        bulan += 1
+                    elif bulan in [4, 6, 9, 11] and hari > 30:
+                        hari = 1
+                        bulan += 1
+                    elif bulan == 2:
+                        if (tahun % 4 == 0 and tahun % 100 != 0) or (tahun % 400 == 0):  # Leap year
+                            if hari > 29:
+                                hari = 1
+                                bulan += 1
+                        else:
+                            if hari > 28:
+                                hari = 1
+                                bulan += 1
+                    if bulan > 12:
+                        bulan = 1
+                        tahun += 1
+
+                date2 = f"{hari:02}/{bulan:02}/{tahun}"
+                time2 = f"{jam:02}:{menit:02}"
+
+                print(f"+{'-' * 63}+")
+                print(f"| TRAIN TICKET \t\t\t\t\t\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"| Origin\t| {asal}\t\t\t\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"| Date\t\t: {departdate}\t\tTIME\t: {departtime}\t\t|")
+                train = f"{random.randint(100, 999)}-{random.choice(string.ascii_uppercase)}"
+                print(f"| Train#\t: {train}\t\t\tCLASS\t: {kelas}\t|")
+                platform = f"{random.randint(1, 10):02}"
+                seat = f"{random.randint(1, 50):02}"
+                print(f"| PLATFORM\t: {platform}\t\t\tSEAT\t: {seat}\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"| DESTINATION\t| {tujuan}\t\t\t\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"| DATE\t: {date2}\t\t\tTIME\t: {time2}\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"| Passenger Name : {name}\t\t\t\t\t|")
+                print(f"+{'-' * 63}+")
+                print(f"Total Cost\t: ${totalCost}")
+
+                other = input("\nOrder another ticket? (yes/no) : ")
+                if other == "no":
+                    return
     
     def ShowRoutes(self):
         while True:
@@ -336,6 +333,7 @@ class Express:
                         print("We Recommend You To Bring :")
                         for i in range(len(item_take)):
                             print(f"{i + 1}. {item_take[i]}")
+                        print(f"With Total Weight : {total_weight} Kg")
                         
                 elif choice == "yes":
                     item.sort(key = lambda x : (-(x[1] / x[2]), x[2], x[1]))
@@ -358,7 +356,7 @@ class Express:
                         print(f"With Total Weight : {total_weight} Kg")
                     
                 if len(item_take) == 0: 
-                    print("You Can't Carry All of Your Belongings")
+                    print(" ")
                     print("You Can Use Our Recommendation or Choose Another Class to Carry More")
                 elif len(item) == len(item_take) and item_all: 
                     print(f"You Can Carry All of Your Items")
