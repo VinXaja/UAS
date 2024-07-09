@@ -116,28 +116,31 @@ class Express:
             print("4. Exit")
             print("="*20)
             menuchoice = input("Choose(1 - 4): ")
-            if int(menuchoice) < 1 or int(menuchoice) > 4:
-                print("Menu yang Anda masukkan tidak sesuai")
-            else:
-                if menuchoice == '1':
-                    self.OrderTickets()
-                elif menuchoice == '2':
-                    self.ShowRoutes()
-                elif menuchoice == '3':
-                    self.ViewTrain()
-                elif menuchoice == '4':
-                    print('='*30)
-                    print("||        TERIMAKASIH       ||")
-                    print("|| MADE BY AJARIN DONG PUH  ||")
-                    print('='*30)
-                    enter = input()
-                    return
+            if menuchoice.isdigit():
+                if int(menuchoice) < 1 or int(menuchoice) > 4:
+                    print("Menu yang Anda masukkan tidak sesuai")
                 else:
-                    print('='*30)
-                    print("|| FITUR TERSEBUT TIDAK ADA ||")
-                    print('='*30)
-                    print()
-                    enter = input()
+                    if menuchoice == '1':
+                        self.OrderTickets()
+                    elif menuchoice == '2':
+                        self.ShowRoutes()
+                    elif menuchoice == '3':
+                        self.ViewTrain()
+                    elif menuchoice == '4':
+                        print('='*30)
+                        print("||        TERIMAKASIH       ||")
+                        print("|| MADE BY AJARIN DONG PUH  ||")
+                        print('='*30)
+                        enter = input()
+                        return
+                    else:
+                        print('='*30)
+                        print("|| FITUR TERSEBUT TIDAK ADA ||")
+                        print('='*30)
+                        print()
+                        enter = input()
+            else:
+                print("Menu yang Anda masukkan tidak sesuai")
 
     def OrderTickets(self):
         while True:
@@ -247,11 +250,11 @@ class Express:
                     print(f"+{'-' * 63}+")
                     print(f"Total Cost\t: ${totalCost}")
 
-                    other = input("\nOrder another ticket?(yes/no):")
+                    other = input("\nOrder another ticket? (yes/no) : ")
                     if other == "no":
-                        break
+                        return
                     else:
-                        self.OrderTickets()
+                        break
     
     def ShowRoutes(self):
         while True:
@@ -331,7 +334,7 @@ class Express:
                             print(f"{i + 1}. {item_take[i]}")
                         
                 elif choice == "yes":
-                    item.sort(key = lambda x : (-(x[1] / x[2]), x[2]))
+                    item.sort(key = lambda x : (-(x[1] / x[2]), x[2], x[1]))
                     for i in range(n):
                         if weight_current >= item[i][1]:
                             weight_current -= item[i][1]
