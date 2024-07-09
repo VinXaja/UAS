@@ -180,10 +180,10 @@ class Express:
                     else:
                         print("Wrong format")
                 while True:
-                    departtime = input("Departure time(HH:MM)\t  : ")
+                    departtime = input("Departure time(HH.MM)\t  : ")
                     if len(departtime) == 5:
                         try:
-                            jam1, menit1 = map(int, departtime.split(':'))
+                            jam1, menit1 = map(int, departtime.split('.'))
                             break
                         except ValueError:
                             print("Input yang benar")
