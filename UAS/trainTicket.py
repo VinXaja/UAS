@@ -449,8 +449,8 @@ Algoritma:
 93. buatkan jam dan menit sebagai map(int, input())
 94. buatkan pesan error jika slah inputan
 95. buatkan confirm sbg inputan ke user("Are you sure about all the data above?(yes/no):")
-96. jika confirm=="no" maka akan kembali ke inseert data
-97. jika confirm=="yes" maka akan lanjut untuk mengecek durasi, totalCost, waktu dan juga hari
+96. jika confirm == "no" maka akan kembali ke inseert data
+97. jika confirm == "yes" maka akan lanjut untuk mengecek durasi, totalCost, waktu dan juga hari
 98. duration diambil dari shortest path yg tadi
 99. totalCost diambil dari nilai dari duration dikalikan dgn 15+ cost dlm self.train
 100. waktunyaa didapat dri wajtu ketika inputan ditambah dgn duration
@@ -483,7 +483,7 @@ Algoritma:
 126. print hasil rute
 127. print "See another Route?"
 128. buatkan menu2choice sbg inputan user("Yes/No")
-129. jika menu2choice == no maka kluar dri loop
+129. jika menu2choice == "no maka kluar dri loop
 
 lanjut ke rara
 

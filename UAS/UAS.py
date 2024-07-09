@@ -121,12 +121,16 @@ class Express:
                     print("Menu yang Anda masukkan tidak sesuai")
                 else:
                     if menuchoice == '1':
+                        print()
                         self.OrderTickets()
                     elif menuchoice == '2':
+                        print()
                         self.ShowRoutes()
                     elif menuchoice == '3':
+                        print()
                         self.ViewTrain()
                     elif menuchoice == '4':
+                        print()
                         print('='*30)
                         print("||        TERIMAKASIH       ||")
                         print("|| MADE BY AJARIN DONG PUH  ||")
@@ -183,10 +187,10 @@ class Express:
                     else:
                         print("Wrong format")
                 while True:
-                    departtime = input("Departure time(HH.MM)\t  : ")
+                    departtime = input("Departure time(HH:MM)\t  : ")
                     if len(departtime) == 5:
                         try:
-                            jam1, menit1 = map(int, departtime.split('.'))
+                            jam1, menit1 = map(int, departtime.split(':'))
                             break
                         except ValueError:
                             print("Input yang benar")
@@ -346,6 +350,7 @@ class Express:
                             item_take.append((item[i][0], f"{int(weight_current / fpb)}/{int(item[i][1] / fpb)}"))
                             total_weight += weight_current
                             weight_current -= weight_current
+
                     if not item_all and len(item_take) != 0:    
                         print("We Recommend You To Bring :")
                         for i in range(len(item_take)):
@@ -359,6 +364,7 @@ class Express:
                     print(f"You Can Carry All of Your Items")
                 else: 
                     print("You Can Use Our Recommendation or Choose Another Class to Carry More")
+                    
                 loop = input("\nTry Another Class ? (Yes / No) : ").lower()
                 
                 if loop == "no": 
